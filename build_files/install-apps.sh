@@ -10,75 +10,27 @@ log() {
 # RPM packages list
 declare -A RPM_PACKAGES=(
   ["fedora"]="\
-    android-tools \
-    aria2 \
-    bchunk \
-    bleachbit \
-    fuse-btfs \
-    fuse-devel \
-    fuse3-devel \
-    fzf \
-    gnome-disk-utility \
-    gparted \
-    gwenview \
-    hashcat \
-    isoimagewriter \
-    kcalc \
-    kgpg \
-    ksystemlog \
-    neovim \
-    nmap \
-    openrgb \
-    printer-driver-brlaser \
-    qemu-kvm \
-    thefuck \
-    util-linux \
-    virt-manager \
-    virt-viewer \
-    wireshark \
-    yakuake \
-    yt-dlp \
-    zsh-autosuggestions \
+    discord \
     zsh"
 
-  ["terra"]="\
-    coolercontrol \
-    ghostty \
-    hack-nerd-fonts \
-    starship \
-    ubuntu-nerd-fonts \
-    ubuntumono-nerd-fonts \
-    ubuntusans-nerd-fonts"
+  ["google-chrome"]="google-chrome-stable"
 
-  ["rpmfusion-free,rpmfusion-free-updates,rpmfusion-nonfree,rpmfusion-nonfree-updates"]="\
-    audacious \
-    audacious-plugins-freeworld \
-    audacity-freeworld"
+  ["negativo17-spotify"]="spotify-client"
+
+  ["terra"]="\
+    starship"
 
   ["fedora-multimedia"]="\
-    HandBrake-cli \
-    HandBrake-gui \
-    haruna \
-    mpv \
     vlc-plugin-bittorrent \
     vlc-plugin-ffmpeg \
     vlc-plugin-kde \
     vlc-plugin-pause-click \
     vlc"
 
-  ["docker-ce"]="\
-    containerd.io \
-    docker-buildx-plugin \
-    docker-ce \
-    docker-ce-cli \
-    docker-compose-plugin"
-
-  ["brave-browser"]="brave-browser"
-  ["cloudflare-warp"]="cloudflare-warp"
   ["vscode"]="code"
 )
 
-log "Starting Amy OS build process"
+log "Starting ptOS build process"
 
 log "Installing RPM packages"
 mkdir -p /var/opt
@@ -103,8 +55,8 @@ done
 log "Enabling system services"
 systemctl enable docker.socket libvirtd.service
 
-log "Adding Amy OS just recipes"
-echo "import \"/usr/share/amyos/just/amy.just\"" >>/usr/share/ublue-os/justfile
+log "Adding ptOS just recipes"
+echo "import \"/usr/share/ptos/just/pt.just\"" >>/usr/share/ublue-os/justfile
 
 log "Hide incompatible Bazzite just recipes"
 for recipe in "install-coolercontrol" "install-openrgb"; do

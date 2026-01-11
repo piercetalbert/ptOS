@@ -1,26 +1,27 @@
-# Install all Amy OS curated apps
-amy-install: amy-install-flatpaks amy-install-brews amy-install-appimages
+#!/usr/bin/env just
+# Install all ptOS curated apps
+pt-install: pt-install-flatpaks pt-install-brews pt-install-appimages
 
 # Install only Flatpaks
-amy-install-flatpaks:
+pt-install-flatpaks:
     #!/usr/bin/env bash
     set -euo pipefail
 
     echo "Installing Flatpaks..."
-    xargs -a <(curl --retry 3 -sL https://raw.githubusercontent.com/astrovm/amyos/main/repo_files/flatpaks) flatpak --system -y install
+    xargs -a <(curl --retry 3 -sL https://raw.githubusercontent.com/piercetalbert/ptos/main/repo_files/flatpaks) flatpak --system -y install
     echo "Flatpaks installation complete."
 
 # Install only Homebrews
-amy-install-brews:
+pt-install-brews:
     #!/usr/bin/env bash
     set -euo pipefail
 
     echo "Installing Homebrews..."
-    xargs -a <(curl --retry 3 -sL https://raw.githubusercontent.com/astrovm/amyos/main/repo_files/brews) brew install
+    xargs -a <(curl --retry 3 -sL https://raw.githubusercontent.com/piercetalbert/ptos/main/repo_files/brews) brew install
     echo "Homebrews installation complete."
 
 # Install only AppImages
-amy-install-appimages:
+pt-install-appimages:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -77,13 +78,13 @@ amy-install-appimages:
         echo "Failed to install $name"
       fi
       rm -f "$appimage"
-    done < <(curl --retry 3 -sL https://raw.githubusercontent.com/astrovm/amyos/main/repo_files/appimages)
+    done < <(curl --retry 3 -sL https://raw.githubusercontent.com/piercetalbert/ptos/main/repo_files/appimages)
     echo "AppImages installation complete."
 
 
 
-# Setup Amy OS recommended settings for Cursor and VSCode
-amy-setup-editors:
+# Setup ptOS recommended settings for Cursor and VSCode
+pt-setup-editors:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -96,7 +97,7 @@ amy-setup-editors:
     done
 
 # Setup Ghostty terminal configuration
-amy-setup-ghostty:
+pt-setup-ghostty:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -107,7 +108,7 @@ amy-setup-ghostty:
     echo "Ghostty setup complete."
 
 # Setup shell configurations (zsh, bash)
-amy-setup-shells:
+pt-setup-shells:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -129,7 +130,7 @@ amy-setup-shells:
     echo "Shell configurations setup complete."
 
 # Restart Bluetooth to fix issues
-amy-fix-bt:
+pt-fix-bt:
     #!/usr/bin/env bash
     set -euo pipefail
     trap '[[ $BASH_COMMAND != echo* ]] && echo "+ $BASH_COMMAND"' DEBUG
@@ -141,7 +142,7 @@ amy-fix-bt:
     echo "Bluetooth fix complete."
 
 # Manage SSD encryption optimizations (Workqueue and TRIM)
-amy-ssd-crypto:
+pt-ssd-crypto:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -242,7 +243,7 @@ amy-ssd-crypto:
     esac
 
 # Setup Sonic Adventure mods (SADX and SA2)
-amy-setup-samods:
+pt-setup-samods:
     #!/usr/bin/env bash
     set -euo pipefail
 
@@ -567,7 +568,7 @@ amy-setup-samods:
     echo -e "\n===== Setup Complete ====="
 
 # Clean up old packages and Docker/Podman images and volumes
-amy-clean:
+pt-clean:
     #!/usr/bin/env bash
     set -euo pipefail
 

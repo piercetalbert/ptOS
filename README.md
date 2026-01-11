@@ -1,14 +1,4 @@
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/amyos)](https://artifacthub.io/packages/container/amyos/amyos)
-[![Build Amy OS](https://github.com/astrovm/amyos/actions/workflows/build.yml/badge.svg)](https://github.com/astrovm/amyos/actions/workflows/build.yml)
-
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/astrovm/amyos/refs/heads/main/repo_files/amy-logo-black.png">
-    <img alt="Amy OS Logo" src="https://raw.githubusercontent.com/astrovm/amyos/refs/heads/main/repo_files/amy-logo-white.png" width="100">
-  </picture>
-</div>
-
-# Amy OS
+# ptOS
 
 A custom Fedora Atomic image designed for gaming, development and daily use.
 
@@ -26,7 +16,7 @@ A custom Fedora Atomic image designed for gaming, development and daily use.
 - Audacious with Winamp skins
 - Brave Browser
 - Cloudflare WARP
-- Curated list of [Flatpaks](https://github.com/astrovm/amyos/blob/main/repo_files/flatpaks), [Homebrews](https://github.com/astrovm/amyos/blob/main/repo_files/brews) and [AppImages](https://github.com/astrovm/amyos/blob/main/repo_files/appimages)
+- Curated list of [Flatpaks](https://github.com/piercetalbert/ptos/blob/main/repo_files/flatpaks), [Homebrews](https://github.com/piercetalbert/ptos/blob/main/repo_files/brews) and [AppImages](https://github.com/piercetalbert/ptos/blob/main/repo_files/appimages)
 - DNS over TLS, DNSSEC and MAC address randomization enabled
 - Docker, Podman, Distrobox and Toolbx
 - Fixed Plasma integration with Google Drive
@@ -40,10 +30,10 @@ A custom Fedora Atomic image designed for gaming, development and daily use.
 
 ## Install
 
-From existing Fedora Atomic/Universal Blue installation switch to Amy OS image:
+From existing Fedora Atomic/Universal Blue installation switch to ptOS image:
 
 ```bash
-sudo bootc switch --enforce-container-sigpolicy ghcr.io/astrovm/amyos:latest
+sudo bootc switch --enforce-container-sigpolicy ghcr.io/piercetalbert/ptos:latest
 ```
 
 If you want to install the image on a new system download and install Bazzite ISO first:
@@ -56,37 +46,37 @@ The following `ujust` commands are available:
 
 ```bash
 # Clean up old packages and Docker/Podman images and volumes
-ujust amy-clean
+ujust pt-clean
 
-# Install all Amy OS apps
-ujust amy-install
+# Install all ptOS apps
+ujust pt-install
 
 # Install only Flatpaks
-ujust amy-install-flatpaks
+ujust pt-install-flatpaks
 
 # Install only Homebrews
-ujust amy-install-brews
+ujust pt-install-brews
 
 # Install only AppImages
-ujust amy-install-appimages
+ujust pt-install-appimages
 
-# Setup Amy OS settings for Cursor and VSCode
-ujust amy-setup-editors
+# Setup ptOS settings for Cursor and VSCode
+ujust pt-setup-editors
 
 # Setup Ghostty terminal configuration
-ujust amy-setup-ghostty
+ujust pt-setup-ghostty
 
 # Setup shell configurations (zsh, bash)
-ujust amy-setup-shells
+ujust pt-setup-shells
 
 # Setup Sonic Adventure mods (SADX and SA2)
-ujust amy-setup-samods
+ujust pt-setup-samods
 
 # Restart Bluetooth to fix issues
-ujust amy-fix-bt
+ujust pt-fix-bt
 
 # Manage SSD encryption optimizations (Workqueue and TRIM)
-ujust amy-ssd-crypto
+ujust pt-ssd-crypto
 ```
 
 ## Package management
