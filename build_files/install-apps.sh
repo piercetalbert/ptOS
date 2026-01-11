@@ -15,16 +15,9 @@ declare -A RPM_PACKAGES=(
 
   ["negativo17-spotify"]="spotify-client"
 
-  ["terra"]="\
-    discord \
-    starship"
+  ["terra"]="discord"
 
-  ["fedora-multimedia"]="\
-    vlc-plugin-bittorrent \
-    vlc-plugin-ffmpeg \
-    vlc-plugin-kde \
-    vlc-plugin-pause-click \
-    vlc"
+  ["fedora-multimedia"]="vlc"
 
   ["vscode"]="code"
 )
