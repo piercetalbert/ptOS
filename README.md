@@ -18,7 +18,7 @@ A custom Fedora Atomic image designed for gaming, development and daily use.
 - Cloudflare WARP
 - Curated list of [Flatpaks](https://github.com/piercetalbert/ptos/blob/main/repo_files/flatpaks), [Homebrews](https://github.com/piercetalbert/ptos/blob/main/repo_files/brews) and [AppImages](https://github.com/piercetalbert/ptos/blob/main/repo_files/appimages)
 - DNS over TLS, DNSSEC and MAC address randomization enabled
-- Docker, Podman, Distrobox and Toolbx
+- Podman, Distrobox and Toolbx
 - Fixed Plasma integration with Google Drive
 - Ghostty terminal, Starship prompt, Zsh, `fuck` alias and Atuin history search (Ctrl+R)
 - OpenRGB and CoolerControl

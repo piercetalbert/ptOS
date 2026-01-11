@@ -52,7 +52,7 @@ for repo in "${!RPM_PACKAGES[@]}"; do
 done
 
 log "Enabling system services"
-systemctl enable docker.socket libvirtd.service
+systemctl enable libvirtd.service
 
 log "Adding ptOS just recipes"
 echo "import \"/usr/share/ptos/just/pt.just\"" >>/usr/share/ublue-os/justfile
