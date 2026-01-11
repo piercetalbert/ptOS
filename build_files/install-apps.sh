@@ -9,15 +9,14 @@ log() {
 
 # RPM packages list
 declare -A RPM_PACKAGES=(
-  ["fedora"]="\
-    discord \
-    zsh"
+  ["fedora"]="zsh"
 
   ["google-chrome"]="google-chrome-stable"
 
   ["negativo17-spotify"]="spotify-client"
 
   ["terra"]="\
+    discord \
     starship"
 
   ["fedora-multimedia"]="\
