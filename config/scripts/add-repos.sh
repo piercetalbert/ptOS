@@ -41,7 +41,7 @@ type=rpm-md
 repo_gpgcheck=0
 EOF
 
-# Heroic Games Launcher (COPR)
-curl -Lo /etc/yum.repos.d/ubk-heroic-games-launcher-fedora-41.repo https://copr.fedorainfracloud.org/coprs/ubk/heroic-games-launcher/repo/fedora-41/ubk-heroic-games-launcher-fedora-41.repo
+# Heroic Games Launcher (COPR) - using atim repo which is currently maintained
+curl -Lo /etc/yum.repos.d/atim-heroic-games-launcher-fedora-41.repo https://copr.fedorainfracloud.org/coprs/atim/heroic-games-launcher/repo/fedora-41/atim-heroic-games-launcher-fedora-41.repo
 
 echo "Repositories added successfully."
