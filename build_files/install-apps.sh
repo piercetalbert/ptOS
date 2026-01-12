@@ -11,7 +11,7 @@ log() {
 declare -A RPM_PACKAGES=(
   ["fedora"]="zsh"
   ["google-chrome"]="google-chrome-stable"
-  ["negativo17-spotify"]="spotify-client"
+  ["fedora-spotify"]="spotify-client"
   ["terra"]="discord"
   ["rpmfusion-free"]="vlc" # or fedora
   ["code"]="code"
@@ -53,7 +53,7 @@ fi
 dnf5 config-manager --add-repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo || true
 
 # Negativo17 (for Spotify)
-dnf5 config-manager --add-repo https://negativo17.org/repos/fedora/spotify.repo || true
+dnf5 config-manager --add-repo https://negativo17.org/repos/fedora-spotify.repo || true
 
 log "Installing RPM packages"
 mkdir -p /var/opt
