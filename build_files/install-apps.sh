@@ -7,22 +7,26 @@ log() {
   echo "=== $* ==="
 }
 
-# RPM packages list
+# RPM packages (system-level packages that need direct integration)
 declare -A RPM_PACKAGES=(
   ["fedora"]="zsh"
+)
 
-  ["google-chrome"]="google-chrome-stable"
-
-  ["negativo17-spotify"]="spotify-client"
-
-  ["terra"]="discord"
-
-  ["fedora-multimedia"]="vlc"
-
-  ["vscode"]="code"
+# Flatpak applications
+FLATPAK_APPS=(
+  "com.google.Chrome"
+  "com.spotify.Client"
+  "com.discordapp.Discord"
+  "org.videolan.VLC"
+  "com.visualstudio.code"
+  "com.heroicgameslauncher.hgl"
 )
 
 log "Starting ptOS build process"
+
+log "Removing unwanted packages"
+dnf5 -y remove sunshine lutris waydroid || true
+flatpak uninstall -y --noninteractive org.mozilla.firefox com.github.Matoking.protontricks io.github.Jeoshin.protonplus || true
 
 log "Installing RPM packages"
 mkdir -p /var/opt
@@ -42,6 +46,11 @@ for repo in "${!RPM_PACKAGES[@]}"; do
     cmd+=("${pkg_array[@]}")
     "${cmd[@]}"
   fi
+done
+
+log "Installing Flatpak applications"
+for app in "${FLATPAK_APPS[@]}"; do
+  flatpak install -y --noninteractive flathub "$app"
 done
 
 log "Enabling system services"
