@@ -1,0 +1,67 @@
+name: ptos
+description: Custom Bazzite image with extra apps
+base-image: ghcr.io/ublue-os/bazzite
+image-version: latest
+
+modules:
+  - type: files
+    files:
+      - source: system_files
+        destination: /
+
+  # Fix /opt permissions (replaces fix-opt.sh logic)
+  # BlueBuild doesn't have a native 'fix-opt' module yet, so we might need a script
+  # or rely on base image behavior. For now, let's include the script.
+  - type: script
+    scripts:
+      - build_files/fix-opt.sh
+
+  - type: yum-repos
+    repos:
+      - name: google-chrome
+        baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
+        gpgkey: https://dl.google.com/linux/linux_signing_key.pub
+        enabled: true
+        gpgcheck: true
+
+      - name: vscode
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+        enabled: true
+        gpgcheck: true
+
+      - name: terra
+        baseurl: https://repos.fyralabs.com/terra$releasever
+        gpgkey: https://repos.fyralabs.com/terra$releasever/key.asc
+        enabled: true
+        gpgcheck: true
+
+      - name: fedora-spotify
+        baseurl: https://negativo17.org/repos/spotify/fedora/$releasever/$basearch/
+        gpgkey: https://negativo17.org/repos/RPM-GPG-KEY-slaanesh
+        enabled: true
+        gpgcheck: true
+
+  - type: copr
+    repos:
+      - ubk/heroic-games-launcher 
+
+  - type: rpm-ostree
+    install:
+      - zsh
+      - google-chrome-stable
+      - spotify-client
+      - discord
+      - vlc
+      - code
+      - heroic-games-launcher-bin
+    remove:
+      - firefox
+      - firefox-langpacks
+      - sunshine
+      - lutris
+      - waydroid
+
+  - type: signing
+    signing_secret_name: SIGNING_SECRET
+    cosign_password_name: COSIGN_PASSWORD
