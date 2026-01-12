@@ -28,7 +28,8 @@ modules:
 
   - type: dnf
     install:
-      - zsh
+      packages:
+        - zsh
     remove:
       packages:
         - firefox
