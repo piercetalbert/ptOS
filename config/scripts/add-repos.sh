@@ -24,7 +24,7 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 
 # Terra (Discord)
-curl -Lo /etc/yum.repos.d/terra.repo https://repos.fyralabs.com/terra.repo
+curl -Lo /etc/yum.repos.d/terra.repo https://repos.fyralabs.com/terra$releasever.repo
 
 # Negativo17 (Spotify) - using fedora-spotify ID manually
 cat > /etc/yum.repos.d/fedora-spotify.repo <<EOF
