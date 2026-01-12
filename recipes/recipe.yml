@@ -16,36 +16,6 @@ modules:
     scripts:
       - build_files/fix-opt.sh
 
-  - type: yum-repos
-    repos:
-      - name: google-chrome
-        baseurl: http://dl.google.com/linux/chrome/rpm/stable/x86_64
-        gpgkey: https://dl.google.com/linux/linux_signing_key.pub
-        enabled: 1
-        gpgcheck: 1
-
-      - name: vscode
-        baseurl: https://packages.microsoft.com/yumrepos/vscode
-        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-        enabled: 1
-        gpgcheck: 1
-
-      - name: terra
-        baseurl: https://repos.fyralabs.com/terra$releasever
-        gpgkey: https://repos.fyralabs.com/terra$releasever/key.asc
-        enabled: 1
-        gpgcheck: 1
-
-      - name: fedora-spotify
-        baseurl: https://negativo17.org/repos/spotify/fedora/$releasever/$basearch/
-        gpgkey: https://negativo17.org/repos/RPM-GPG-KEY-slaanesh
-        enabled: 1
-        gpgcheck: 1
-
-  - type: copr
-    repos:
-      - ubk/heroic-games-launcher 
-
   - type: rpm-ostree
     install:
       - zsh
