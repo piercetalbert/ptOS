@@ -24,16 +24,6 @@ modules:
           - com.discordapp.Discord
           - org.videolan.VLC
           - com.heroicgameslauncher.hgl
-          - com.mattjakeman.ExtensionManager
-        remove:
-          - com.vysp3r.ProtonPlus
-          - com.github.Matoking.protontricks
-          - org.mozilla.firefox
-
-  - type: rpm-ostree
-    install:
-      - zsh
-      - code
 
   - type: dnf
     remove:
