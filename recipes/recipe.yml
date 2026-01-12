@@ -18,13 +18,14 @@ modules:
       - fix-opt.sh
 
   - type: default-flatpaks
-    notify: true
-    system:
-      - com.spotify.Client
-      - com.discordapp.Discord
-      - org.videolan.VLC
-      - com.heroicgameslauncher.hgl
-      - com.mattjakeman.ExtensionManager
+    configurations:
+      - scope: system
+        install:
+          - com.spotify.Client
+          - com.discordapp.Discord
+          - org.videolan.VLC
+          - com.heroicgameslauncher.hgl
+          - com.mattjakeman.ExtensionManager
 
   - type: rpm-ostree
     install:
