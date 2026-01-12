@@ -17,15 +17,20 @@ modules:
       - add-repos.sh
       - fix-opt.sh
 
+  - type: default-flatpaks
+    notify: true
+    system:
+      - com.spotify.Client
+      - com.discordapp.Discord
+      - org.videolan.VLC
+      - com.heroicgameslauncher.hgl
+      - com.mattjakeman.ExtensionManager
+
   - type: rpm-ostree
     install:
       - zsh
       - google-chrome-stable
-      - spotify-client
-      - discord
-      - vlc
       - code
-      - heroic-games-launcher-bin
     remove:
       - firefox
       - firefox-langpacks
