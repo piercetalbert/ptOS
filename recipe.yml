@@ -63,5 +63,3 @@ modules:
       - waydroid
 
   - type: signing
-    signing_secret_name: SIGNING_SECRET
-    cosign_password_name: COSIGN_PASSWORD
