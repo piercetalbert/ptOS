@@ -12,7 +12,6 @@ modules:
   # Fix /opt permissions (replaces fix-opt.sh logic)
   - type: script
     scripts:
-      - add-repos.sh
       - fix-opt.sh
 
   - type: default-flatpaks
