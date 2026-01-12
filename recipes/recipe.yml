@@ -34,9 +34,14 @@ modules:
     install:
       - zsh
       - code
+
+  - type: dnf
     remove:
-      - sunshine
-      - lutris
-      - waydroid
+      packages:
+        - firefox
+        - firefox-langpacks
+        - lutris
+        - sunshine
+        - waydroid
 
   - type: signing
