@@ -8,6 +8,8 @@ modules:
     files:
       - source: system_files
         destination: /
+      - source: cosign.pub
+        destination: /etc/pki/containers/ptos.pub
 
   # Fix /opt permissions (replaces fix-opt.sh logic)
   # BlueBuild doesn't have a native 'fix-opt' module yet, so we might need a script
@@ -62,6 +64,6 @@ modules:
       - lutris
       - waydroid
 
-  - type: signing
-    signing_secret_name: SIGNING_SECRET
-    cosign_password_name: COSIGN_PASSWORD
+  # - type: signing
+  #   signing_secret_name: SIGNING_SECRET
+  #   cosign_password_name: COSIGN_PASSWORD
