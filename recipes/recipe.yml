@@ -10,8 +10,6 @@ modules:
         destination: /
 
   # Fix /opt permissions (replaces fix-opt.sh logic)
-  # BlueBuild doesn't have a native 'fix-opt' module yet, so we might need a script
-  # or rely on base image behavior. For now, let's include the script.
   - type: script
     scripts:
       - add-repos.sh
@@ -21,24 +19,24 @@ modules:
     configurations:
       - scope: system
         install:
+          - com.google.Chrome
           - com.spotify.Client
           - com.discordapp.Discord
           - org.videolan.VLC
           - com.heroicgameslauncher.hgl
           - com.mattjakeman.ExtensionManager
+        remove:
+          - com.vysp3r.ProtonPlus
+          - com.github.Matoking.protontricks
+          - org.mozilla.firefox
 
   - type: rpm-ostree
     install:
       - zsh
-      - google-chrome-stable
       - code
     remove:
-      - firefox
-      - firefox-langpacks
       - sunshine
       - lutris
       - waydroid
 
   - type: signing
-
-
