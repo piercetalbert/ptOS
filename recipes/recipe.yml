@@ -24,8 +24,11 @@ modules:
           - com.discordapp.Discord
           - org.videolan.VLC
           - com.heroicgameslauncher.hgl
+          - com.visualstudio.code
 
   - type: dnf
+    install:
+      - zsh
     remove:
       packages:
         - firefox
@@ -33,17 +36,5 @@ modules:
         - lutris
         - sunshine
         - waydroid
-
-  - type: dconf
-    settings:
-      org/gnome/shell:
-        favorite-apps:
-          - 'com.google.Chrome.desktop'
-          - 'steam.desktop'
-          - 'com.spotify.Client.desktop'
-          - 'com.discordapp.Discord.desktop'
-          - 'com.heroicgameslauncher.hgl.desktop'
-          - 'org.gnome.Nautilus.desktop' # Files
-          - 'ptyxis.desktop' # Bazzite's default terminal
 
   - type: signing
