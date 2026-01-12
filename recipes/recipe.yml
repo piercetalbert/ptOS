@@ -6,7 +6,7 @@ image-version: latest
 modules:
   - type: files
     files:
-      - source: ../system_files
+      - source: system_files
         destination: /
 
   # Fix /opt permissions (replaces fix-opt.sh logic)
@@ -14,8 +14,8 @@ modules:
   # or rely on base image behavior. For now, let's include the script.
   - type: script
     scripts:
-      - ../build_files/add-repos.sh
-      - ../build_files/fix-opt.sh
+      - add-repos.sh
+      - fix-opt.sh
 
   - type: rpm-ostree
     install:
