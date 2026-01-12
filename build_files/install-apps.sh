@@ -10,16 +10,12 @@ log() {
 # RPM packages (system-level packages that need direct integration)
 declare -A RPM_PACKAGES=(
   ["fedora"]="zsh"
-)
-
-# Flatpak applications
-FLATPAK_APPS=(
-  "com.google.Chrome"
-  "com.spotify.Client"
-  "com.discordapp.Discord"
-  "org.videolan.VLC"
-  "com.visualstudio.code"
-  "com.heroicgameslauncher.hgl"
+  ["google-chrome"]="google-chrome-stable"
+  ["negativo17-spotify"]="spotify-client"
+  ["terra"]="discord"
+  ["rpmfusion-free"]="vlc" # or fedora
+  ["code"]="code"
+  ["copr:atim/heroic-games-launcher"]="heroic-games-launcher-bin"
 )
 
 log "Starting ptOS build process"
@@ -27,6 +23,37 @@ log "Starting ptOS build process"
 log "Removing unwanted packages"
 dnf5 -y remove sunshine lutris waydroid || true
 flatpak uninstall -y --noninteractive org.mozilla.firefox com.github.Matoking.protontricks io.github.Jeoshin.protonplus || true
+
+log "Adding external repositories"
+# Google Chrome
+if [ ! -f /etc/yum.repos.d/google-chrome.repo ]; then
+  cat > /etc/yum.repos.d/google-chrome.repo <<EOF
+[google-chrome]
+name=google-chrome
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+EOF
+fi
+
+# VS Code
+if [ ! -f /etc/yum.repos.d/vscode.repo ]; then
+  cat > /etc/yum.repos.d/vscode.repo <<EOF
+[code]
+name=Visual Studio Code
+baseurl=https://packages.microsoft.com/yumrepos/vscode
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+EOF
+fi
+
+# Terra (for Discord)
+dnf5 config-manager --add-repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo || true
+
+# Negativo17 (for Spotify)
+dnf5 config-manager --add-repo https://negativo17.org/repos/fedora/spotify.repo || true
 
 log "Installing RPM packages"
 mkdir -p /var/opt
@@ -46,11 +73,6 @@ for repo in "${!RPM_PACKAGES[@]}"; do
     cmd+=("${pkg_array[@]}")
     "${cmd[@]}"
   fi
-done
-
-log "Installing Flatpak applications"
-for app in "${FLATPAK_APPS[@]}"; do
-  flatpak install -y --noninteractive flathub "$app"
 done
 
 log "Enabling system services"
